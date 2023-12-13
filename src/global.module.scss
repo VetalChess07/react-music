@@ -1,0 +1,20 @@
+* {
+   margin: 0;
+   padding: 0;
+   font-family: Arial, Helvetica, sans-serif;
+
+   
+   &::-webkit-scrollbar {
+     display: none;
+   }
+ }
+ 
+ .wrapper {
+   display: flex;
+   flex-direction: column;
+   padding: 10px;
+   gap: 10px;
+   width: min(600px, 90vw);
+   margin: auto; 
+ }
+ 
