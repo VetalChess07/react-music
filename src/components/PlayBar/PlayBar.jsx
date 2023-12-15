@@ -94,7 +94,7 @@ const PlayBar = () => {
          <MdSkipNext className={style.prevTrack} onClick={()=> prevTrack(currentTrack) } />
          <TimeControls />
          <p>{formatDuration}</p>
-         <MdSkipNext onClick={()=> nextTrack(currentTrack, index + 1) } />
+         <MdSkipNext onClick={()=> nextTrack(currentTrack) } />
          <RiShareBoxLine/>
         
          </>

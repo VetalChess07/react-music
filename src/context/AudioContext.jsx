@@ -9,29 +9,23 @@ const audio = new Audio()
 const AudioProvider = ({children}) =>{
    // (trackLislt[0]
    const [playerIsActive, setPlayerIsActive]= useState(false)
-   const [currentTrack, setCurrentTrack] = useState(trackList[0]);
+   const [currentTrack, setCurrentTrack] = useState(trackList);
    const [isPlaying, setIsPlaying] = useState(false);
 
    const [countTrackIndex, setCountTrackIndex] = useState()
 
 
   
-   const nextTrack = (track, index) =>{
+   const nextTrack = (track) =>{
      
-     console.log(track)
-     console.log(index )
-      // if(trackList.length !== index){
-      //    handleToggleAudio(trackList[ index + 1])
-      // } else{
-      //    handleToggleAudio(trackList[0])
-      // }
-     
-      
-      
+   
     
-
-      
-      handleToggleAudio(trackList[index])
+      if(trackList.length !== track.id){
+         handleToggleAudio(trackList[ track.id])
+      } else{
+         handleToggleAudio(trackList[0])
+      }
+    
         
      
    }
@@ -68,7 +62,7 @@ const AudioProvider = ({children}) =>{
    audio.volume =0.1
    const handleToggleAudio =(track)=>{
       // включение плеера
-     
+     console.log(track)
       
       setPlayerIsActive(true)
      

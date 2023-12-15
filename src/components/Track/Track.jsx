@@ -21,7 +21,7 @@ const Track = (track) => {
 
  
 
-  const [isActiveTrack, setIsActiveTrack] = useState(false)
+  const [nextTrack ,isActiveTrack, setIsActiveTrack] = useState(false)
  
  
     
@@ -34,7 +34,7 @@ const Track = (track) => {
        
        <div className={classNames(isCurrentTrack && style.activeTrack)} onClick={() => handleToggleAudio(track)} >
       {isCurrentTrack && isPlaying ? <FaPause/>: <FaPlay /> }  
- 
+    
        </div>
       
       <img className={style.preview} src={preview} alt="" />
