@@ -11,8 +11,9 @@ import classNames from 'classnames';
 
 
 const Track = (track) => {
+ 
   
-  const {id,src,preview,duration,artists,title} = track
+  const {id,src,preview,duration,artists,title, index} = track
 
   const {handleToggleAudio, currentTrack, isPlaying} = useContext(AudioContext)
  
@@ -23,12 +24,13 @@ const Track = (track) => {
   const [isActiveTrack, setIsActiveTrack] = useState(false)
  
  
-    console.log(isActiveTrack)
+    
     const isCurrentTrack =  currentTrack.id === track.id
    
   
   return (
     <div className={style.track}>
+      <h2>{index}</h2>
        
        <div className={classNames(isCurrentTrack && style.activeTrack)} onClick={() => handleToggleAudio(track)} >
       {isCurrentTrack && isPlaying ? <FaPause/>: <FaPlay /> }  

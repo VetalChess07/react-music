@@ -6,6 +6,10 @@ import secondsToMMSS from '../../utils/secondsToMMSS';
 
 import { FaPlay } from "react-icons/fa";
 import { FaPause } from "react-icons/fa";
+import { MdSkipNext } from "react-icons/md";
+import { IoArrowRedoCircleOutline } from "react-icons/io5";
+import { FaArrowsRotate } from "react-icons/fa6";
+import { RiShareBoxLine } from "react-icons/ri";
 
 import style from './PlayBar.module.scss'
 
@@ -14,7 +18,7 @@ const TimeControls = () => {
 
 
 
-   const { audio, currentTrack } = useContext(AudioContext)
+   const { audio, currentTrack, nextTrack } = useContext(AudioContext)
 
    const { duration } = currentTrack
 
@@ -58,23 +62,27 @@ const TimeControls = () => {
 
 const PlayBar = () => {
 
-   const { audio, currentTrack, isPlaying, handleToggleAudio } = useContext(AudioContext)
+   const { audio, currentTrack, isPlaying, handleToggleAudio, nextTrack, prevTrack, playerIsActive, randomTrack } = useContext(AudioContext)
 
 
-   const { title, artists, preview, duration } = currentTrack;
+   const { title, artists, preview, duration, index } = currentTrack;
 
-
+   console.log(currentTrack)
+   
 
    const formatDuration = secondsToMMSS(duration)
 
 
 
-
+   
 
 
    return (
       <div className={style.playbar}>
-         <img className={style.preview} src={preview} alt="" />
+         {playerIsActive ? 
+         <>
+         {index}
+             <img className={style.preview} src={preview} alt="" />
          <div onClick={() => handleToggleAudio(currentTrack)}>
             {isPlaying ? <FaPause /> : <FaPlay />}
          </div>
@@ -83,9 +91,29 @@ const PlayBar = () => {
             <p>{artists}</p>
          </div>
 
-
+         <MdSkipNext className={style.prevTrack} onClick={()=> prevTrack(currentTrack) } />
          <TimeControls />
          <p>{formatDuration}</p>
+         <MdSkipNext onClick={()=> nextTrack(currentTrack, index + 1) } />
+         <RiShareBoxLine/>
+        
+         </>
+          :<div className={style.startBar}>
+            <h1>Включите любую композицию</h1>
+            <div className={style.startBar__item}>
+               <div onClick={() => handleToggleAudio(currentTrack[0])}  className={style.btn__block}>
+               <IoArrowRedoCircleOutline className={style.btn} />
+               <p>включить первый трек</p>
+               </div>
+               <div onClick={() => randomTrack()} className={style.btn__block}>
+               <FaArrowsRotate className={style.btn} />
+               <p>включить случайный трек</p>
+               </div>
+             
+            </div>
+             
+          </div> }
+        
       </div>
    )
 }
