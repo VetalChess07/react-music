@@ -38,7 +38,7 @@ const MainPage = () => {
   <>
     <input value={searchInputValue} onChange={ handleChange } type="text" placeholder='поиск тректов' />
     <div className="tracks__wrapper">   
-      {tracks.map(track => (<Track key={track.id} {...track} />))}
+      {tracks.map((track, index) => (<Track key={index} index={index} {...track} />))}
       <PlayBar/>
     </div>
   </>  
