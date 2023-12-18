@@ -14,11 +14,13 @@ const AudioProvider = ({children}) =>{
 
    const [countTrackIndex, setCountTrackIndex] = useState()
 
-
-  
+   const [stopAudio, setStopAudio] = useState(true)
+   const [isSoundOff,  setIsSoundOff] = useState(false)
+   
    const nextTrack = (track) =>{
      
-   
+      setStopAudio(true)
+      setIsSoundOff(false)
     
       if(trackList.length !== track.id){
          handleToggleAudio(trackList[ track.id])
@@ -31,6 +33,9 @@ const AudioProvider = ({children}) =>{
    }
 
    const prevTrack =( track) =>{
+      setStopAudio(true)
+      setIsSoundOff(false)
+  
       let activeTrackId = track.id - 1
       console.log(activeTrackId)
       if(activeTrackId !== 0){
@@ -59,12 +64,13 @@ const AudioProvider = ({children}) =>{
       handleToggleAudio(trackList[currentTrack.id]);
     } 
    }
-   audio.volume =0.1
+   audio.volume =1
    const handleToggleAudio =(track)=>{
       // включение плеера
      console.log(track)
       
       setPlayerIsActive(true)
+      
      
      
          if(currentTrack.id !== track.id){
@@ -80,10 +86,12 @@ const AudioProvider = ({children}) =>{
       if(isPlaying){
          audio.pause()
          setIsPlaying(false)
+         setStopAudio(false)
       }
       else{
          audio.play()
          setIsPlaying(true)
+         setStopAudio(true)
       }
       
        
@@ -92,7 +100,7 @@ const AudioProvider = ({children}) =>{
 
    };
 
-   const value ={audio ,currentTrack, isPlaying, handleToggleAudio, nextTrack, prevTrack, playerIsActive, randomTrack}
+   const value ={audio ,currentTrack, isPlaying, handleToggleAudio, nextTrack, prevTrack, playerIsActive, randomTrack, setStopAudio, stopAudio, setIsSoundOff,isSoundOff}
 
    return <AudioContext.Provider value={value}>{children}</AudioContext.Provider>
 

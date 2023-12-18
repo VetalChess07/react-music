@@ -1,0 +1,75 @@
+.TrackPageFull{
+   position: fixed;
+   left: 0;
+   top: 0;
+   width: 100dvw;
+   height: 100dvh;
+   background-color: #9340fe;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   .inner{
+      width: 100%;
+      max-width: 980px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      
+     .item:first{
+      background-color: red;
+     }
+      .item{
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+
+         .btnSoundOff{
+         background: none;
+           &__item{
+              width: 30px;
+           height: 30px;
+           fill: #97b90e;
+           }
+           &__item_off{
+            width: 30px;
+         height: 30px;
+         fill: red;
+         }
+         }
+
+         .btnPause{
+            background-color: #97b90e;
+            padding: 20px;
+            border-radius: 50%;
+            margin: 0 30px;
+         }
+        
+         .btnPrev,
+         .btnNext{
+           background: transparent;
+           svg{
+            width: 30px;
+            height: 30px;
+           }
+           
+         }
+         .btnPrev{
+            transform: rotate(180deg);
+         }
+
+        
+         .PlayBar_credits__m6hQf{
+            background-color: red;
+         }
+         h2, p{
+            color: #fff;
+         }
+         h2{
+            margin: 0 20px;
+         }
+        
+      }
+   }
+}

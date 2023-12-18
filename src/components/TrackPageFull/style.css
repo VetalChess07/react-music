@@ -1,0 +1,21 @@
+.fullPreview{
+   width: 100%; 
+   max-width: 40dvw;
+   height: 40dvh;
+   border-radius: 50%;
+  animation: 25s linear 0s normal none infinite running rot;
+}
+.fullPreview.stopRotate {
+ 
+  
+animation: none;
+ }
+
+ @keyframes rot {
+   0% {
+     transform: rotate(0deg);
+   }
+   100% {
+     transform: rotate(360deg);
+   }
+ }

@@ -60,7 +60,7 @@ const TimeControls = () => {
 }
 
 
-const PlayBar = () => {
+export const PlayBar = ({setFullTrackActive}) => {
 
    const { audio, currentTrack, isPlaying, handleToggleAudio, nextTrack, prevTrack, playerIsActive, randomTrack } = useContext(AudioContext)
 
@@ -83,19 +83,23 @@ const PlayBar = () => {
          <>
          {index}
              <img className={style.preview} src={preview} alt="" />
-         <div onClick={() => handleToggleAudio(currentTrack)}>
-            {isPlaying ? <FaPause /> : <FaPlay />}
-         </div>
+        
          <div className={style.credits}>
             <h4>{title}</h4>
             <p>{artists}</p>
          </div>
 
          <MdSkipNext className={style.prevTrack} onClick={()=> prevTrack(currentTrack) } />
+         <div onClick={() => handleToggleAudio(currentTrack)}>
+            {isPlaying ? <FaPause /> : <FaPlay />}
+         </div>
+         <MdSkipNext onClick={()=> nextTrack(currentTrack) } />
+
+
          <TimeControls />
          <p>{formatDuration}</p>
-         <MdSkipNext onClick={()=> nextTrack(currentTrack) } />
-         <RiShareBoxLine/>
+         
+         <RiShareBoxLine onClick={()=> setFullTrackActive(true)}/>
         
          </>
           :<div className={style.startBar}>
@@ -119,3 +123,4 @@ const PlayBar = () => {
 }
 
 export default PlayBar
+
